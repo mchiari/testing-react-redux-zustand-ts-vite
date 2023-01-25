@@ -1,0 +1,51 @@
+## Scaffold 
+    npm create vite@latest
+
+
+## Install Testing library
+    npm install @testing-library/jest-dom @testing-library/react @testing-library/user-event -D
+
+
+## Install jest 
+    npm install jest -D
+
+
+## install babel and other stuff
+    npm install @babel/core @babel/preset-env @babel/preset-typescript @babel/preset-react babel-jest identity-obj-proxy jest-environment-jsdom -D
+
+
+## setup jest and babel in package.json
+
+"scripts": {
+    "test": "jest"
+},
+ "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.ts"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx,js,jsx}",
+      "!src/**/*.d.ts"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less$": "identity-obj-proxy"
+    }
+},
+"babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+}
+
+## at jest-setup.ts
+import "@testing-library/jest-dom"
